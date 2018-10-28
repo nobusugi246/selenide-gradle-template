@@ -1,20 +1,26 @@
 plugins {
+    id 'com.github.ben-manes.versions' version '0.20.0'
     id 'java'
+    id 'eclipse'
+    id 'idea'
 }
 
 repositories {
-  mavenCentral()
+    mavenCentral()
 }
-dependencies {
-    testImplementation group: 'com.codeborne', name: 'selenide', version:'4.14.2'
 
+dependencies {
     // JUnit 5
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.2.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.2.0'
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+    testImplementation "org.junit.jupiter:junit-jupiter-params:${junitVersion}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+
+    // Selenide 5
+    testCompile "com.codeborne:selenide:${selenideVersion}"
 
     // Logging of 3-rd party libraries
-    testImplementation group: 'org.slf4j', name: 'jul-to-slf4j', version:'1.7.25'
-    testImplementation group: 'ch.qos.logback', name: 'logback-classic', version:'1.2.3'
+    testImplementation "org.slf4j:jul-to-slf4j:${slf4jVersion}"
+    testImplementation "ch.qos.logback:logback-classic:${logbackVersion}"
 }
 
 test {
